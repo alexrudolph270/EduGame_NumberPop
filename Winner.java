@@ -17,7 +17,7 @@ import static java.util.Collections.sort;
 
 public class Winner
 {
-    ArrayList<Bubbles> winners;
+    public static ArrayList<Bubbles> winners;
 
 //    // Alinda 9/18/16
 //    // I changed the code to return an updated arrayList (with the correct number removed.)
@@ -98,4 +98,27 @@ public class Winner
         sort(bubbles);
         this.winners = bubbles;
     }
+
+    public boolean isCorrect(int num)
+    {
+        if(num == this.winners.get(0).getNum())
+        {
+            this.winners.remove(0);
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public static int getNext()
+    {
+        int retval = winners.get(0).getNum();
+        return retval;
+    }
+
+    public static void removeNext()
+    {
+        winners.remove(0);
+    }
+
 }

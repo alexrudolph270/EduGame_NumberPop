@@ -3,17 +3,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 
 public class Bubbles extends JButton implements Comparable<Bubbles>
 {
     private final int DEFAULT_SIZE = 200;
     private Image popped;
 
-    private String number;  // Declares which bubble it is
-    private ImageIcon image;
+    //private ImageIcon image;
     private int value;  // The value of its assigned number
     private boolean onClick = false;
 
@@ -43,19 +41,18 @@ public class Bubbles extends JButton implements Comparable<Bubbles>
             @Override
             public void actionPerformed(ActionEvent e)
             {
-                if(!onClick)  // Determine if the icon is clicked and react accordingly
+                if(Winner.getNext() == value)  // Determine if the icon is clicked and react accordingly
                 {
                     onClick = true;
-                    // if Winner.isCorrect() or somethin' like that
+                    Winner.removeNext();
                     //    Winner.remove() or somethin like that
                     setIcon(new ImageIcon(popped));
-                    setBackground(Color.green);
                 }
                 else
                 {
                     // Winner.tryAgain() or somethin like that
                     onClick = false;
-                    setBackground(Color.darkGray);
+                    setBackground(Color.red);
                 }
             }
         });
