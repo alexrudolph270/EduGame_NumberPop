@@ -89,6 +89,11 @@ public class Game extends JFrame {
         Winner winners = new Winner(temp);
     }
 
+    public void youWin()
+    {
+        System.out.println("You win");
+    }
+
     public static void main(String[] args) {
         Game window = new Game();
     }

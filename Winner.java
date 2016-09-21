@@ -121,4 +121,17 @@ public class Winner
         winners.remove(0);
     }
 
+    public static boolean wisEmpty()
+    {
+        boolean retVal = winners.isEmpty();
+        if(retVal == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

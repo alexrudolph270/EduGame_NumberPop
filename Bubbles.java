@@ -10,6 +10,7 @@ public class Bubbles extends JButton implements Comparable<Bubbles>
 {
     private final int DEFAULT_SIZE = 200;
     private Image popped;
+    private Image winMag;
 
     //private ImageIcon image;
     private int value;  // The value of its assigned number
@@ -30,6 +31,10 @@ public class Bubbles extends JButton implements Comparable<Bubbles>
             Image pimg = ImageIO.read(getClass().getResource("images/bubble_blank.jpg"));
             Image dpimg = pimg.getScaledInstance(DEFAULT_SIZE, DEFAULT_SIZE, Image.SCALE_SMOOTH);
             popped = dpimg;
+
+            Image wimg = ImageIO.read(getClass().getResource("images/bubble_winner.jpg"));
+            Image dwimg = wimg.getScaledInstance(DEFAULT_SIZE, DEFAULT_SIZE, Image.SCALE_SMOOTH);
+            winMag = dwimg;
         }
         catch(IOException e)
         {
@@ -45,8 +50,17 @@ public class Bubbles extends JButton implements Comparable<Bubbles>
                 {
                     onClick = true;
                     Winner.removeNext();
-                    //    Winner.remove() or somethin like that
-                    setIcon(new ImageIcon(popped));
+                    //    Winner.remove() or something like that
+
+                    // Alex's attempt
+                    if(Winner.wisEmpty() == true)
+                    {
+                        setIcon(new ImageIcon(winMag));
+                    }
+                    else
+                    {
+                        setIcon(new ImageIcon(popped));
+                    }
                 }
                 else
                 {
